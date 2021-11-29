@@ -23,10 +23,13 @@
           where idJuego = ".$_POST['idJuego']." and puntuacion = (select min(puntuacion) from partida where idJuego = ".$_POST['idJuego'].");";
           $resultado = $this->conexion->consultar($sql);
         }
-        
+
         //GUARDA LA NUEVA PUNTUACIÓN
         $sql = "insert into partida(nombreUsuario, idJuego, puntuacion) values ('".$_POST['nombreUsuario']."', ".$_POST['idJuego'].", ".$_POST['puntuacion'].")";
         $resultado = $this->conexion->consultar($sql);
+        echo 'PUNTUACIÓN GUARDADA!!!';
+      }else{
+        echo 'PUNTUACION NO GUARDADA, DEMASIADO BAJA!!!';
       }
     }
   }
